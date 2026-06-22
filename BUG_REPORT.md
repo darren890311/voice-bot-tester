@@ -69,19 +69,6 @@ question. The turn also frequently trails off right there — a multi-second pau
 after "New" with no completion — making the greeting sound broken. Poor, robotic
 first impression and a sign of a templating/personalization defect.
 
-Bug: Clipped, sometimes unintelligible agent audio (including a dropped utterance after the disclaimer)
-Severity: Medium
-Call: call-01-schedule_simple.txt around 0:03–0:08 (audio; runs 20260621T162935 and 171504)
-Details: The agent's outbound audio is clipping at the source: its recorded track
-shows hard-clipped, flat-topped waveforms on loud syllables (27 such runs in one
-call vs. 0 on the tester's side, which is level-managed). Several agent sentences
-are hard to understand as a result. Concretely, between the recorded "This call
-may be recorded…" disclaimer (0:03) and the live "Thanks for calling…" greeting
-(0:08) there is a short spoken utterance too distorted to make out — Deepgram
-could not transcribe it, so it is audible on the recording but absent from the
-transcript. Intelligibility is core for a voice agent; clipped output and
-dropped/garbled words degrade comprehension for callers and any downstream STT.
-
 Bug: Repeats and restarts its own prompts mid-turn
 Severity: Low
 Call: call-01-schedule_simple.txt at 0:32–0:38 (run 20260621T171504)

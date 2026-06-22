@@ -51,7 +51,9 @@ class Settings:
             anthropic_api_key=_require("ANTHROPIC_API_KEY"),
             deepgram_api_key=_require("DEEPGRAM_API_KEY"),
             cartesia_api_key=_require("CARTESIA_API_KEY"),
-            anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6"),
+            # Haiku for low reply latency — the patient is a persona simulator,
+            # so first-token speed matters more than Sonnet's extra reasoning.
+            anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001"),
             # A natural, conversational Cartesia voice. Override with any voice id.
             cartesia_voice_id=os.getenv(
                 "CARTESIA_VOICE_ID", "71a7ad14-091c-4e8e-a314-022ece01c121"

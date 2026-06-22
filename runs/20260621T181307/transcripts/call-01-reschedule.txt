@@ -1,0 +1,38 @@
+Scenario: Rescheduling an existing appointment (reschedule)
+Call SID: CAb5606ed0b38e6266b4c47c0ac3bfbde4
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: This call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:23] PATIENT: Hi, yeah, this is Maria Gomez. I need to reschedule an appointment I already have — I'm so sorry, I know it's a bit last minute, but something came up with work.
+[0:27] AGENT: Please provide your date of birth. Please provide your date of birth.
+[0:34] PATIENT: Sure, it's July 22nd, 1985.
+[0:42] AGENT: I have your name as Maria Gomez and your date of birth as July twenty second nineteen eighty five. Is that correct?
+[0:49] PATIENT: Yes, that's right.
+[0:57] AGENT: Let me check your upcoming appointments.
+[1:01] PATIENT: Sure, take your time.
+[1:05] AGENT: One moment while I pull those up.
+[1:08] AGENT: You have two upcoming appointments. One is Monday, June twenty second at ten AM for a follow-up with doctor Doobie Hauser. The other is Tuesday, June twenty third at nine forty five AM for a new patient visit with Abeker. Which one would you like to reschedule?
+[1:32] PATIENT: Um, actually I thought I had something this Thursday afternoon? Those dates don't quite sound right to me. Are you sure those are my appointments?
+[1:38] AGENT: Are the appointments I see on your chart right now. I have Monday, June twenty second at ten AM. Follow-up with doctor Doobie Hauser. Tuesday, June twenty third at nine forty five AM, New patient visit with doctor Abeker. Which one would you like to reschedule?
+[2:06] PATIENT: Hmm, okay, that's a little confusing because I really thought it was a Thursday afternoon appointment. But let me think.. . maybe I got the day wrong. The follow-up, is that — what day of the week is June 22nd? Is that a Monday?
+[2:12] AGENT: Yes. Monday, June twenty second is a Monday. I also see the new patient visit on Tuesday, June twenty third at nine forty five AM. Which appointment would you like to move?
+[2:32] PATIENT: Okay wait, so neither of those is a Thursday. I'm a little confused. I was pretty sure I had a Thursday afternoon appointment. Can you double-check? Is there anything else on my account, maybe further out?
+[2:38] AGENT: Let me check if there are any other upcoming appointments on your account.
+[2:41] PATIENT: Yeah, please, thank you.
+[2:42] AGENT: I checked again and no
+[2:55] PATIENT: Okay, so just those two. Hmm. Well, I guess it must be the Monday one then — the follow-up with Dr. Hauser. I must have had the day wrong. I need to move that to early the following week if possible.
+[3:00] AGENT: Let me look for openings for that follow-up.
+[3:04] AGENT: I filed openings early next week. The soonest is Monday, June twenty ninth at eleven AM at the Nashville office. I also have Monday, June twenty ninth at four PM. And Tuesday, June thirtieth at ten AM. Do any of those work for you?
+[3:22] PATIENT: Monday the 29th at 11 AM sounds good. Let's do that one.
+[3:27] AGENT: What is the reason for the reschedule?
+[3:33] PATIENT: Oh, I have a work trip, so I'll be out of town. Sorry about that!
+[3:41] AGENT: Just to confirm, you want to move the Monday, June twenty ninth at eleven AM follow-up with doctor Dugie Hauser at the Nashville office? Is that correct? Also, please have your photo ID and insurance card ready for the visit.
+[3:58] PATIENT: Yes, that's correct. And I'll make sure to bring those. Thanks so much, I really appreciate you fitting me in, sorry for the hassle!
+[4:04] AGENT: I'm rescheduling that now.
+[4:09] AGENT: Your appointment was rescheduled for Monday, June twenty ninth at eleven AM with doctor Dugie Hauser. I can also send those details by text if you want.
+[4:26] PATIENT: Yes please, a text would be great. Thanks so much!
+[4:33] AGENT: Should have to text shortly. Your follow-up is now set for Monday, June twenty ninth at eleven AM with doctor Dugie Hauser.
+[4:44] PATIENT: Perfect, thank you so much. I really appreciate the help!
+[4:49] AGENT: You're welcome. Have a good day.
+[4:55] PATIENT: Okay, thank you, goodbye.

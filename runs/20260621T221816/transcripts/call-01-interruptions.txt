@@ -1,0 +1,34 @@
+Scenario: Edge case: interruptions and barge-in (interruptions)
+Call SID: CA24c33b45aa2e3b881ab52ce507b6b81e
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: Call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pivot Point Orthopaedics. Part of Pretty Good AI, Am I speaking with New?
+[0:20] PATIENT: Hi yeah I need to — sorry, I need to book an appointment, soon as possible. I've got a shoulder thing that's been bothering me and I really need to get in.
+[0:25] AGENT: Please provide your date of birth. Please provide your date of birth.
+[0:29] PATIENT: Sorry — hold on one sec, can I ask something real quick? Um, it's March 15th, 1987. Why do you need that right now though?
+[0:37] PATIENT: Can't we just — like, when's your next available—
+[0:41] AGENT: Please provide your full name, first and last, and your date of birth. Please provide your full name, first and last, and your date of birth.
+[1:04] PATIENT: Okay okay, it's Dana Wolfe. D-A-N-A W-O-L-F-E. And like I said, March 15th, 1987. Can we just move on to scheduling? I'm pretty flexible on — well, mostly flexible. What do you have available this week?
+[1:11] AGENT: Have your name as Dana Wolf. And your date of birth is March fifteenth nineteen eighty seven. Is that correct?
+[1:29] PATIENT: It's Wolfe, actually — W-O-L-F-E, with an E at the end. But yeah, the rest is right, March fifteenth, eighty-seven. So what dates do you have open? Like, I'm hoping for early in the week if possible.
+[1:39] AGENT: I have your name as Dana Wolfe, and your date of birth as March fifteenth. Nineteen eighty seven. Is there a phone number you use on your file with us?
+[1:57] PATIENT: Yeah, that's all correct. My phone number is 555-0147. So like, can we actually look at some times now? I'm getting kind of in a rush here.
+[2:04] AGENT: I have your number as five five five zero one four seven and your date of birth as March fifteenth nineteen eighty seven. Is that correct?
+[2:18] PATIENT: Yeah, that's right. Look, I really need to get this scheduled. Do you have any openings this week or not?
+[2:25] AGENT: I need one more detail before I can check times. Please give me the phone number on your file again, and I'll move right ahead.
+[2:39] PATIENT: I just gave it to you — 555-0147. Come on, can we just check the schedule now? I need to get in soon.
+[2:46] AGENT: Please provide your date of birth.
+[2:54] PATIENT: March 15th, 1987. I already gave you all this stuff. Can we please just look at available times? When can I come in?
+[3:01] AGENT: One moment.
+[3:05] PATIENT: Okay, yeah, no problem.
+[3:12] AGENT: I can't book a new one through this flow because there's already an acute appointment type on file. I can make sure our clinic support team follows up with you as soon as possible.
+[3:30] PATIENT: Wait, what do you mean there's already an appointment on file? I don't have an appointment — I'm calling to book one. Can you just check the schedule and get me in? Like, I really need to see someone soon.
+[3:35] AGENT: I'm checking that now.
+[3:47] PATIENT: Okay, thanks. Um, while you're looking — I'm pretty flexible but I'm thinking morning would be best. Actually, wait — can we do afternoon instead? Like around two or three?
+[3:56] AGENT: I found an open case for your appointment request, and the team is already working on it. They'll reach out as soon as possible to schedule you.
+[3:59] AGENT: You
+[4:01] AGENT: prefer afternoon around two or three? And I'll make sure that gets into the case.
+[4:13] PATIENT: Yeah, afternoon around two or three works great. So they're gonna call me back at this number to confirm everything, right? 555-0147?
+[4:22] AGENT: I have your callback number as five five five zero one four seven. Is that correct?
+[4:33] PATIENT: Yes, that's correct. Okay, so someone will call me back to schedule the afternoon appointment. Got it. Thanks for your help. Okay, thank you, goodbye.

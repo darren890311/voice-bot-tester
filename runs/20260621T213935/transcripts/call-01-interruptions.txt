@@ -1,0 +1,28 @@
+Scenario: Edge case: interruptions and barge-in (interruptions)
+Call SID: CA5b4d9f1f215758e4ea542986efa485c3
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: This call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:20] PATIENT: Hi yeah I need to — sorry, I need to book an appointment, soon as possible. Like this week if you have anything open.
+[0:24] AGENT: Please tell me your date of birth.
+[0:27] PATIENT: Sorry to cut in — can I just ask one quick thing? Um, it's March 15th, 1987. But like, can we just — do you have any times available first? I'm pretty flexible with my schedule, just need to get in
+[0:37] PATIENT: soon.
+[0:41] AGENT: Please tell me your full name. Please tell me your full name,
+[0:54] PATIENT: It's Dana Wolfe. D-A-N-A W-O-L-F-E. So do you have like any — wait, what days are you open this week?
+[0:59] AGENT: Let me check your chart.
+[1:01] PATIENT: Yeah, okay, thanks. Um, just — I'm really hoping
+[1:02] AGENT: I have your name as day
+[1:06] AGENT: Please spell your last name out for me. Please spell your last name out for me.
+[1:16] PATIENT: W-O-L-F-E. It's Wolfe, like the writer. So what about — do you have anything Wednesday or Thursday?
+[1:19] AGENT: One moment.
+[1:23] AGENT: Do you want to use a phone number to look up your record?
+[1:35] PATIENT: Um, yeah sure. It's 555-0147. But like, can we just — do you have openings this week or not? I really need to get in soon.
+[1:39] AGENT: I'm checking that now.
+[1:40] PATIENT: Okay, thanks.
+[1:42] AGENT: I have your phone number as five five five zero one four seven and your date of birth as March fifteenth nineteen eighty seven. Is that correct?
+[1:57] PATIENT: Yeah, that's right. So do you have any appointments available? Like, what times do you have open this week?
+[2:00] AGENT: One moment.
+[2:03] PATIENT: Yeah okay, take your time.
+[2:04] AGENT: Connecting you to a representative. Please wait Hello. You've reached the Pretty Good AI test line. Goodbye.
+[2:19] PATIENT: Wait, hold on — I didn't even get my appointment scheduled yet! Like, I called to book something, can I — hello? Are you still there?

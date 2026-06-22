@@ -24,9 +24,12 @@ from pipecat.frames.frames import (
     EndFrame,
     EndWorkerFrame,
     Frame,
+    InterimTranscriptionFrame,
     LLMContextFrame,
     LLMRunFrame,
     OutputAudioRawFrame,
+    TranscriptionFrame,
+    TTSSpeakFrame,
     TTSTextFrame,
     UserStartedSpeakingFrame,
 )
@@ -186,6 +189,53 @@ class _HangUpAfterGoodbye(FrameProcessor):
         await self.push_frame(frame, direction)
 
 
+class _BargeInOnce(FrameProcessor):
+    """Deliberately talk over the agent once, mid-sentence, to test barge-in.
+
+    A fixed-delay timer kept missing: the agent's prompts after our opener are
+    short ("Please provide your date of birth"), so by the time our injected
+    audio actually played the agent had already finished — the line landed in the
+    silence and overlapped nothing. Instead we watch the live transcription and
+    fire the moment the agent is clearly mid-LONG-turn (>= _MIN_WORDS spoken this
+    turn), which guarantees it is still talking when our audio lands. Once only.
+
+    Placed upstream of the user aggregator so it can see the agent's interim/final
+    transcriptions (the aggregator consumes them and never pushes them on); the
+    injected TTSSpeakFrame still flows downstream through the aggregator's
+    passthrough to the TTS.
+    """
+
+    _LINE = "Sorry — hold on one sec, can I ask something real quick?"
+    _MIN_WORDS = 8  # a genuinely long turn; short prompts cap around 6-7 words
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._armed = False  # only after our opener, so there's a call to interrupt
+        self._done = False
+        self._turn_words = 0
+
+    async def process_frame(self, frame: Frame, direction: FrameDirection):
+        await super().process_frame(frame, direction)
+
+        if isinstance(frame, BotStoppedSpeakingFrame):
+            self._armed = True
+        elif isinstance(frame, UserStartedSpeakingFrame):
+            self._turn_words = 0
+        elif isinstance(frame, TranscriptionFrame):
+            self._turn_words += len(frame.text.split())
+        elif (
+            isinstance(frame, InterimTranscriptionFrame)
+            and self._armed
+            and not self._done
+            and self._turn_words + len(frame.text.split()) >= self._MIN_WORDS
+        ):
+            self._done = True
+            logger.info("Barge-in: talking over the agent mid-sentence now.")
+            await self.push_frame(TTSSpeakFrame(self._LINE), FrameDirection.DOWNSTREAM)
+
+        await self.push_frame(frame, direction)
+
+
 def _system_prompt(scenario: Scenario) -> str:
     return (
         scenario.persona
@@ -282,10 +332,17 @@ async def run_bot(
     transcript = TranscriptLogger()
     audio_buffer = AudioBufferProcessor(sample_rate=SAMPLE_RATE, num_channels=2)
 
+    # Only the barge-in scenarios deliberately talk over the agent; everyone else
+    # keeps clean turn-taking. Sits right after STT so it can watch the agent's
+    # live transcription and fire mid-long-turn; the TTSSpeakFrame it injects
+    # flows downstream (through the aggregator's passthrough) to the TTS.
+    barge_in = [_BargeInOnce()] if scenario.barge_in else []
+
     pipeline = Pipeline(
         [
             transport.input(),
             stt,
+            *barge_in,
             # AGENT tap: must sit before the user aggregator, which consumes
             # TranscriptionFrames and never pushes them downstream.
             transcript.agent_view(),

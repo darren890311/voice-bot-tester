@@ -78,3 +78,28 @@ re-said the whole thing: "…your last visit was not available in the chart. Wou
 you like to book an office visit today?" The self-interruption and near-verbatim
 restart (with our tester silent throughout) makes the agent sound glitchy and
 forces the caller to sit through duplicated speech.
+More of the same in call-01-reschedule.txt (run 20260621T181307): it duplicated a
+whole prompt back-to-back — "Please provide your date of birth. Please provide
+your date of birth." (0:27) — and produced an ungrammatical confirmation,
+"You should have to text shortly." (4:33; verified by listening — the agent
+really said it, garbled, where it meant "you should get a text shortly").
+And again throughout call-01-interruptions.txt (run 20260621T221816), where it
+spoke whole prompts twice back-to-back: "Please provide your date of birth.
+Please provide your date of birth." (0:25) and "Please provide your full name,
+first and last, and your date of birth." repeated verbatim (0:41). Consistent
+stutter/restart/duplication across calls.
+
+Bug: Stuck in a verification loop — re-requests details already given and confirmed, never advances
+Severity: High
+Call: call-01-interruptions.txt at 0:25–2:54 (run 20260621T221816)
+Details: The agent repeatedly asked for the same identifying details and never
+retained them, so the call never reached the actual task (scheduling). Date of
+birth was requested at 0:25, 0:41, and 2:46; the patient supplied it four times
+(0:29, 1:04, 1:29, 2:54). Phone number was requested at 1:39, again at 2:25 ("give
+me the phone number on your file again"), and again at 4:22. The clearest failure:
+at 2:04 the agent read the phone number and DOB back and asked "Is that correct?",
+the patient confirmed (2:18) — then at 2:25 it asked for the phone number again
+and at 2:46 for the date of birth again. It confirms a detail and immediately
+re-requests it. The caller is trapped re-supplying the same data and the booking
+is never completed (the call again dead-ends to "our clinic support team will
+follow up"). This loop, not any single prompt, is the dominant failure of the call.

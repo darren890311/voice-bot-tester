@@ -82,14 +82,20 @@ def analyze_dir(transcripts_dir: str, api_key: str, out_dir: str) -> str:
 
 
 if __name__ == "__main__":
-    # Allow re-running analysis on existing transcripts without placing calls:
+    # Re-run analysis on the most recent run's transcripts without placing calls:
     #   python -m analysis.analyze
     from dotenv import load_dotenv
 
     load_dotenv()
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    runs = sorted(d for d in glob.glob(os.path.join(root, "runs", "*")) if os.path.isdir(d))
+    if not runs:
+        logger.error("No runs found under runs/. Place a call first (make call ...).")
+        raise SystemExit(1)
+    latest = runs[-1]  # timestamped names sort chronologically
+    logger.info(f"Analyzing latest run: {latest}")
     analyze_dir(
-        os.path.join(root, "transcripts"),
+        os.path.join(latest, "transcripts"),
         os.environ["ANTHROPIC_API_KEY"],
-        root,
+        latest,
     )

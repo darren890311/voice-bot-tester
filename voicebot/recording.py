@@ -12,6 +12,28 @@ import soundfile as sf
 from loguru import logger
 
 
+_FULL_SCALE = 32768.0
+
+
+def _log_levels(samples: np.ndarray, num_channels: int) -> None:
+    """Log per-channel peak / clip stats on raw PCM (pre-encode ground truth)."""
+    chans = samples.reshape(-1, 1) if samples.ndim == 1 else samples
+    # Track 0 = agent/incoming, track 1 = our patient bot (see bot.py audio path).
+    names = ["agent", "patient"] if num_channels == 2 else [f"ch{i}" for i in range(chans.shape[1])]
+    for i, name in enumerate(names[: chans.shape[1]]):
+        ch = chans[:, i].astype(np.int32)
+        peak = int(np.abs(ch).max()) if ch.size else 0
+        peak_dbfs = 20 * np.log10(peak / _FULL_SCALE) if peak else float("-inf")
+        # Hard clipping = samples pinned at full scale (int16 saturates at -32768).
+        clipped = int(np.count_nonzero((ch >= 32767) | (ch <= -32768)))
+        clip_pct = 100 * clipped / ch.size if ch.size else 0.0
+        flag = "  <-- CLIPPING" if clip_pct > 0.0 else ""
+        logger.info(
+            f"audio level [{name}]: peak={peak} ({peak_dbfs:+.2f} dBFS) "
+            f"clipped={clipped} ({clip_pct:.3f}%){flag}"
+        )
+
+
 def save_recording(
     pcm: bytes,
     *,
@@ -31,6 +53,11 @@ def save_recording(
         # Drop any trailing partial frame, then reshape to (frames, channels).
         usable = (len(samples) // num_channels) * num_channels
         samples = samples[:usable].reshape(-1, num_channels)
+
+    # Ground-truth level check on the RAW PCM, before any lossy encode rounds the
+    # peaks off and hides clipping. Hard digital clipping shows as samples pinned
+    # at full scale; a healthy signal peaks a few dB below it.
+    _log_levels(samples, num_channels)
 
     base = os.path.join(out_dir, f"call-{call_index:02d}-{scenario_key}")
 

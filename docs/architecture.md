@@ -10,9 +10,9 @@ is a persona system prompt (in `scenarios.py`) that gives Claude a concrete goal
 and rules for talking like a real caller, so the bot **actively steers** the
 conversation rather than answering passively. The runner (`python -m voicebot`)
 brings up the server and tunnel, places calls one at a time, and on each call's
-completion writes a timestamped transcript (`transcripts/`) and an mp3
-(`recordings/`); an optional pass sends all transcripts to Claude to draft a
-bug report.
+completion writes a transcript and an mp3 into a per-run folder
+(`runs/<timestamp>/{transcripts,recordings}/`); an optional pass sends all
+transcripts to Claude to draft a bug report in the same folder.
 
 **Key design choices.** I chose a *pipeline* (separate STT/LLM/TTS) over a
 single speech-to-speech model because the task is fundamentally about *control*:

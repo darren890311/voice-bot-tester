@@ -24,8 +24,10 @@ from .caller import place_call
 from .config import Settings
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RECORDINGS_DIR = os.path.join(ROOT, "recordings")
-TRANSCRIPTS_DIR = os.path.join(ROOT, "transcripts")
+# Each invocation writes into its own timestamped run folder so reruns never
+# overwrite previous evidence: runs/<timestamp>/{recordings,transcripts}/ + the
+# generated BUG_REPORT.md.
+RUNS_DIR = os.path.join(ROOT, "runs")
 
 
 def _start_server(port: int) -> uvicorn.Server:
@@ -55,6 +57,15 @@ def run(scenario_keys: list[str], analyze: bool) -> None:
     server = _start_server(settings.port)
     public_host = _open_tunnel(settings.port)
 
+    # One timestamped folder per run so nothing from a previous run is clobbered.
+    run_id = time.strftime("%Y%m%dT%H%M%S")
+    run_dir = os.path.join(RUNS_DIR, run_id)
+    recordings_dir = os.path.join(run_dir, "recordings")
+    transcripts_dir = os.path.join(run_dir, "transcripts")
+    os.makedirs(recordings_dir, exist_ok=True)
+    os.makedirs(transcripts_dir, exist_ok=True)
+    logger.info(f"Run outputs -> {run_dir}")
+
     completed: list[dict] = []
     try:
         for i, key in enumerate(scenario_keys, start=1):
@@ -64,8 +75,8 @@ def run(scenario_keys: list[str], analyze: bool) -> None:
             job = {
                 "scenario": scenario,
                 "call_index": i,
-                "recordings_dir": RECORDINGS_DIR,
-                "transcripts_dir": TRANSCRIPTS_DIR,
+                "recordings_dir": recordings_dir,
+                "transcripts_dir": transcripts_dir,
                 "done": threading.Event(),
             }
             call_sid = place_call(settings, public_host)
@@ -87,7 +98,7 @@ def run(scenario_keys: list[str], analyze: bool) -> None:
     if analyze and completed:
         from analysis.analyze import analyze_calls
 
-        analyze_calls(completed, settings, out_dir=ROOT)
+        analyze_calls(completed, settings, out_dir=run_dir)
 
 
 def main() -> None:

@@ -44,15 +44,16 @@ make call SCENARIO=refill       # place ONE call with the "refill" patient
 make all                        # run every scenario once + write BUG_REPORT.md
 ```
 
-Each call:
+Each invocation writes into its own timestamped run folder so reruns never
+overwrite previous evidence: `runs/<timestamp>/`. Each call:
 - places an outbound call to **+1-805-439-8008** (the only number this bot dials),
-- saves the recording to `recordings/call-NN-<scenario>.mp3`,
-- saves a timestamped transcript to `transcripts/call-NN-<scenario>.txt`.
+- saves the recording to `runs/<timestamp>/recordings/call-NN-<scenario>.mp3`,
+- saves the transcript to `runs/<timestamp>/transcripts/call-NN-<scenario>.txt`.
 
 `make all` runs all 11 scenarios back-to-back (comfortably ≥10 calls), then
-generates a first-draft `BUG_REPORT.md` from the transcripts.
+generates a first-draft `BUG_REPORT.md` inside that run folder.
 
-To regenerate the bug report from existing transcripts without calling:
+To regenerate the bug report from the most recent run's transcripts without calling:
 
 ```bash
 make report
@@ -81,8 +82,8 @@ voicebot/
   config.py      env / settings
 analysis/
   analyze.py     transcripts -> draft bug report via Claude
-recordings/      *.mp3 call audio (committed for submission)
-transcripts/     *.txt transcripts (committed for submission)
+runs/            <timestamp>/{recordings/*.mp3, transcripts/*.txt, BUG_REPORT.md}
+                 one folder per run (pick one to submit)
 ```
 
 ## Notes & cost

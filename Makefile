@@ -1,4 +1,4 @@
-.PHONY: setup list call all analyze report clean
+.PHONY: setup check list call all analyze report clean
 
 VENV=.venv
 PY=$(VENV)/bin/python
@@ -9,6 +9,10 @@ setup:
 	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
 	@echo "Setup done. Copy .env.example to .env and fill it in."
+
+# Validate all API keys before spending money on a call.
+check:
+	$(PY) -m voicebot.preflight
 
 list:
 	$(PY) -m voicebot --list
@@ -25,9 +29,10 @@ all:
 analyze:
 	$(PY) -m voicebot --scenario $(SCENARIO) --analyze
 
-# Regenerate the bug report from existing transcripts (no calls placed).
+# Regenerate the bug report from the most recent run's transcripts (no calls placed).
 report:
 	$(PY) -m analysis.analyze
 
+# Remove all run outputs. The hand-curated top-level BUG_REPORT.md is left alone.
 clean:
-	rm -f recordings/*.mp3 recordings/*.ogg transcripts/*.txt BUG_REPORT.md
+	rm -rf runs/

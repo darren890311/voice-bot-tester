@@ -1,0 +1,20 @@
+Scenario: Simple appointment scheduling (schedule_simple)
+Call SID: CA0cf883cbc76f43161de0f4218a83e3f8
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: This call may be recorded for quality and training purposes.
+[0:08] AGENT: Thanks for calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:16] PATIENT: Hi, yeah, I'd like to schedule an appointment please.
+[0:21] AGENT: Please tell me your date of birth.
+[0:26] PATIENT: Sure, it's March 4th, 1990.
+[0:32] AGENT: I see your last visit was not available in the chart.
+[0:35] AGENT: Like to book an office visit today?
+[0:35] AGENT: I
+[0:38] AGENT: your last visit was not available in the chart. Would you like to book an office visit today?
+[0:49] PATIENT: Yeah, I'm actually a new patient. I'd like to set up a routine new patient appointment, ideally sometime next week if you have anything available.
+[0:54] AGENT: Let me check for new patient openings next week.
+[1:00] AGENT: I saw that you already have a new patient appointment on file, so I can't book another one of the same type. If want, I can have live support help you with it.
+[1:17] PATIENT: Oh, um, I think there might be some confusion — I don't have any existing appointments here. I've never been to this practice before. Could you check again, or maybe transfer me to someone who can help sort this out?
+[1:22] AGENT: Connecting you to a representative. Please wait.
+[1:28] AGENT: Hello. You've reached the Pretty Good AI test line. Goodbye.
+[1:38] PATIENT: Oh, wait — I got disconnected from the scheduling. I still need to book that new patient appointment. Hello?

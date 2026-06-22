@@ -1,0 +1,25 @@
+Scenario: Simple appointment scheduling (schedule_simple)
+Call SID: CA1488d29d777c9d656c2433482ab1d040
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: This call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New
+[0:19] PATIENT: Hi, yeah, I'd like to schedule an appointment please.
+[0:23] AGENT: Please tell me your date of birth.
+[0:28] PATIENT: Sure, it's March 4th, 1990.
+[0:33] AGENT: The birthday does not match our records. But for demo purposes, I will accept it. I'll help schedule that now.
+[0:46] PATIENT: Oh okay, that's fine. Um, I'm actually a new patient, so you might not have me in the system yet. I'd like to book a routine new-patient appointment if that's possible.
+[0:51] AGENT: I see this is for a new patient consultation. Would you like to book that type of appointment today?
+[0:59] PATIENT: Yes, exactly. That's what I'm looking for.
+[1:03] AGENT: Let me check openings for a new patient visit.
+[1:08] AGENT: I'm seeing there's already a new patient appointment on file. If you want, I can hand this over to live support now.
+[1:14] AGENT: I can connect you to our patient support team. However, I am a pretty good AI and can do many of the things an operator can. Do you wanna give me a try?
+[1:27] PATIENT: Sure, let's give it a try. I'm just looking for the earliest weekday morning slot you have next week.
+[1:35] AGENT: I'm hitting a scheduling conflict in the system. I can't complete this one right now, but I can make sure our clinic support team follows up with you as soon as possible.
+[1:50] PATIENT: Oh okay, that's a little disappointing. Can you at least give me a sense of what times might be available next week so I'm prepared when someone calls back?
+[1:56] AGENT: I can't see reliable openings from here right now, and I don't want to guess. I can make sure the clinic support team follows up as soon as possible.
+[2:16] PATIENT: Okay, that works. Can you make a note that I'm looking for a weekday morning, as early in the week as possible? And what's the best number they'll reach me at — do you have that on file, or should I give it to you?
+[2:21] AGENT: I have your number as eight six zero four two six seven five four seven. Is that correct?
+[2:37] PATIENT: Um, let me think.. . yeah, that sounds right. And my name is Jordan Lee, just so they have that when they call back.
+[2:42] AGENT: I'll note that the callback should be a weekday morning. As early in the week as possible. I have your number as eight six zero four two six seven five four seven I'm not able to take new scheduling details into the system right now, but I can make sure the clinic support team follows up with this request.
+[3:04] PATIENT: Okay, that works for me. Thanks for your help. Okay, thank you, goodbye.

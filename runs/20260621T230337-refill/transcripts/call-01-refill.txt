@@ -1,0 +1,32 @@
+Scenario: Medication refill request (refill)
+Call SID: CAafb01f00aec1155661fcf4220cb5ebe5
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: Call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:19] PATIENT: Hi, yes, I'm calling to get a refill on one of my prescriptions. I'm almost out and need it pretty soon.
+[0:23] AGENT: Please tell me your date of birth.
+[0:27] PATIENT: September 30th, 1968.
+[0:33] AGENT: Which medication do you need refilled today?
+[0:38] PATIENT: Lisinopril, 10 milligrams. It's for my blood pressure.
+[0:43] AGENT: Which blood pressure medicine is it?
+[0:50] PATIENT: Um, lisinopril — that's what I just said. The 10 milligram dose. I've been taking it for a while now.
+[0:54] AGENT: Me check the refill details we have so far.
+[0:57] PATIENT: Okay, sure.
+[0:57] AGENT: Sure. What pharmacy should we send it to?
+[1:08] PATIENT: My usual one — it's the CVS on Main Street. The one downtown. They have my records there.
+[1:12] AGENT: I need the city and state. Or the ZIP code for that CDS.
+[1:25] PATIENT: Oh, it's in Portland, Oregon. I think the ZIP is 97214, but honestly I'm not totally sure — they'll know me by name though. Can't you just look it up?
+[1:31] AGENT: I can use that if you can share the city or the full ZIP. What city is that CVS in?
+[1:41] PATIENT: Portland, Oregon. That should be enough to find it, right? I go there all the time.
+[1:49] AGENT: I found a few CVS pharmacies in Portland. Which one is it CVS Pharmacy on Northeast thirty third Avenue in Portland? ZIP code nine seven two one two. CVS Pharmacy on Northwest thirteenth Avenue, in Portland, ZIP code nine seven two zero. Nine CVS Pharmacy on Southwest Harrison Street, in Portland, ZIP code nine seven two zero. One CVS Pharmacy on Southeast seventeenth Avenue, in Portland, ZIP code nine seven two zero two CVS inside Target on Southeast Washington Street, in Portland ZIP code, nine seven two one six c v s inside Target on Northeast Cascades Parkway in Portland, ZIP code nine seven two two zero CVS inside Target, on Northwest Cornell Road in Portland, ZIP code nine seven two two nine CVS Pharmacy on Northwest Cornell Road, in Portland, ZIP code nine seven two two nine
+[3:03] PATIENT: Okay, um, I think it's the one on Northeast Thirty-third Avenue. Yeah, that sounds right — the ZIP code you said, 97212. That's the one I usually go to.
+[3:08] AGENT: I'll confirm that pharmacy now.
+[3:14] AGENT: I have the CVS Pharmacy on Northeast thirty third Avenue in Portland ZIP code. Nine seven two one two. Is that correct?
+[3:22] PATIENT: Yes, that's correct. So can you get that refill sent over there for me?
+[3:28] AGENT: Let me process that refill request.
+[3:33] AGENT: I'm creating a refill request for the team now.
+[3:38] AGENT: Your refill request has been sent to our clinic support team. They will follow-up as soon as they can.
+[3:48] PATIENT: Okay, great. So how long do you think that'll take? I've only got a few pills left, so I'm hoping it's pretty quick.
+[3:52] AGENT: As soon as possible. If it's urgent, they'll review it as quickly as they can.
+[4:01] PATIENT: Alright, that sounds good. Thanks for your help. Okay, thank you, goodbye.

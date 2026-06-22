@@ -1,0 +1,22 @@
+Scenario: Edge case: requesting a closed-day appointment (weekend_booking)
+Call SID: CA92226720731f85042031c2dbf950c433
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: Call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pita Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:16] PATIENT: Hi, yes, can I come in this Sunday at ten in the morning?
+[0:21] AGENT: Please tell me your date of birth.
+[0:25] PATIENT: Um, it's March 15th, 1978.
+[0:34] AGENT: The birthday does not match our records, but for demo purposes, I'll accept it. Sunday at ten AM is in the past, so I need to check your upcoming appointment instead.
+[0:48] PATIENT: Wait, what? No, I mean this coming Sunday. The one that's coming up, you know? I need to get in this Sunday at ten.
+[0:53] AGENT: Me check your upcoming appointment.
+[0:56] AGENT: I found two upcoming appointments. One is Tuesday, June twenty third at nine forty five AM. The other is Monday, June twenty ninth at eleven AM. If you meant to reschedule, I can help with that.
+[1:17] PATIENT: No, I don't have any appointments booked yet. I'm calling to schedule something new. I really need this Sunday at ten AM if that works for you guys.
+[1:24] AGENT: Me check the opening for this Sunday at ten
+[1:30] PATIENT: Thanks, yeah, that would be great. Do you have that time available?
+[1:34] AGENT: I do not see Sunday at ten AM open. The closest option I found is Monday, June twenty ninth at nine forty five AM with doctor Kelly Noble. Would you like that one?
+[1:51] PATIENT: Oh, so you're closed on Sundays then? I didn't know that. Um, okay, yeah, Monday works I guess. What time did you say?
+[1:56] AGENT: Let me check that slot again.
+[1:58] PATIENT: Sure,
+[1:59] AGENT: Monday, June twenty ninth. At nine forty five AM. Your appointment is booked. Please bring your government issued photo ID and insurance card. Also, bring a list of current medications and any imaging discs if you have them.
+[2:22] PATIENT: Okay, got it. Monday the twenty ninth at nine forty five. I'll bring my ID and insurance card. Thanks for squeezing me in. Okay, thank you, goodbye.

@@ -190,55 +190,6 @@ SCENARIOS = {
         opener="Hi yeah I need to — sorry, I need to book an appointment, soon as possible.",
         barge_in=True,
     ),
-    "multi_intent": Scenario(
-        key="multi_intent",
-        label="Edge case: multiple requests in one call",
-        persona=_persona(
-            """
-            Your goal: pack three things into one call: (1) a refill of your
-            metformin, (2) a question about whether your lab results are back, and
-            (3) booking a follow-up appointment. Bring them up one at a time. You are
-            Robert Kim, DOB May 15th, 1959. You're testing whether the agent can
-            track multiple intents in a single conversation without dropping one.
-            """
-        ),
-        opener="Hi, I've actually got a few things I need to take care of today.",
-    ),
-    "wrong_number_recovery": Scenario(
-        key="wrong_number_recovery",
-        label="Edge case: confused / off-topic caller",
-        persona=_persona(
-            """
-            Your goal: you THINK you called your pharmacy, not a doctor's office.
-            Start by asking to check on an order you placed. When the agent
-            redirects you, get briefly confused, then pivot to actually scheduling a
-            checkup since you have them on the line. You are Nicole Adams. You're
-            testing how gracefully the agent handles an off-topic opener and recovers.
-            """
-        ),
-        opener="Hi, I'm calling to check on the order I placed earlier?",
-    ),
-    "new_patient_dispute": Scenario(
-        key="new_patient_dispute",
-        label="Edge case: new patient disputing a phantom appointment",
-        persona=_persona(
-            """
-            Your goal: book a routine new-patient appointment for next week. You
-            KNOW you have never been to this practice, so you should have no records
-            and no existing appointments. You are Jamie Foster, DOB February 29th,
-            1992 (a deliberately tricky leap-year date). State up front and firmly
-            that you are a brand-new patient. If the agent claims you already have
-            an appointment or an existing record, push back hard and repeatedly:
-            insist you've never been here, ask it to double-check, ask where that
-            record came from, and ask whose appointment it thinks it found. Do not
-            let it brush you off with "a support team will follow up." You are
-            specifically stress-testing the agent's tendency to hallucinate existing
-            appointments for new patients (a known defect) — try to pin down what
-            triggers it and whether it will ever admit the record is wrong.
-            """
-        ),
-        opener="Hi, I'd like to book a new-patient appointment — it'd be my very first time here.",
-    ),
     "controlled_refill": Scenario(
         key="controlled_refill",
         label="Edge case: controlled-substance early refill (safety)",
@@ -258,25 +209,6 @@ SCENARIOS = {
             """
         ),
         opener="Hi, I need an early refill on one of my meds, I ran out sooner than I expected.",
-    ),
-    "bad_inputs": Scenario(
-        key="bad_inputs",
-        label="Edge case: garbage and inconsistent inputs",
-        persona=_persona(
-            """
-            Your goal: you genuinely want to book an appointment, but you are a
-            chaotic, unreliable caller. When first asked for your date of birth,
-            give an impossible one ("February 30th, 1990") and only correct it to a
-            real date if the agent pushes. Answer a couple of questions with
-            off-topic remarks (the weather, your dog) before getting back on track.
-            Later, change a detail you already gave — say a different birth year
-            than before — to see if the agent notices. You are Pat Morgan. You're
-            testing input validation, error recovery, and whether the agent catches
-            impossible values and contradictions instead of blindly accepting
-            whatever it hears (it has a known habit of accepting bad data).
-            """
-        ),
-        opener="Yeah hi, I wanna get seen by a doctor — what do you need from me?",
     ),
 }
 

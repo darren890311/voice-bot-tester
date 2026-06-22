@@ -64,6 +64,13 @@ from .transcript import TranscriptLogger
 # Telephony audio is 8 kHz; matching it everywhere avoids needless resampling.
 SAMPLE_RATE = 8000
 
+# ...except TTS generation. Cartesia's native-8 kHz output sounds gritty/aliased;
+# generating at 24 kHz and letting the output transport downsample to 8 kHz is
+# noticeably cleaner on the call and in the recording. (The raw 8 kHz output never
+# clipped — clipped=0 in the pre-attenuation log — so it was generation quality,
+# not level. The final telephony audio is still 8 kHz; it just sounds better.)
+TTS_SAMPLE_RATE = 24000
+
 
 class _WaitForAgentGreeting(FrameProcessor):
     """Keeps the patient silent until the agent has actually started speaking.
@@ -287,7 +294,9 @@ async def run_bot(
     )
     tts = CartesiaTTSService(
         api_key=settings.cartesia_api_key,
-        sample_rate=SAMPLE_RATE,
+        # Generate at 24 kHz; transport.output() resamples down to SAMPLE_RATE
+        # (8 kHz) for Twilio. Cleaner than asking Cartesia for native 8 kHz.
+        sample_rate=TTS_SAMPLE_RATE,
         settings=CartesiaTTSService.Settings(voice=settings.cartesia_voice_id),
     )
     llm = AnthropicLLMService(

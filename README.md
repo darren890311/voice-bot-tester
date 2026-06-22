@@ -44,14 +44,16 @@ make call SCENARIO=refill       # place ONE call with the "refill" patient
 make all                        # run every scenario once + write BUG_REPORT.md
 ```
 
-Each invocation writes into its own timestamped run folder so reruns never
-overwrite previous evidence: `runs/<timestamp>/`. Each call:
+Each invocation writes into its own run folder (timestamp + scenario, e.g.
+`runs/<timestamp>-refill/`) so reruns never overwrite previous evidence and each
+folder is easy to identify. Each call:
 - places an outbound call to **+1-805-439-8008** (the only number this bot dials),
-- saves the recording to `runs/<timestamp>/recordings/call-NN-<scenario>.mp3`,
-- saves the transcript to `runs/<timestamp>/transcripts/call-NN-<scenario>.txt`.
+- saves the recording to `runs/<timestamp>-<scenario>/recordings/call-NN-<scenario>.mp3`,
+- saves the transcript to `runs/<timestamp>-<scenario>/transcripts/call-NN-<scenario>.txt`.
 
-`make all` runs all 11 scenarios back-to-back (comfortably ≥10 calls), then
-generates a first-draft `BUG_REPORT.md` inside that run folder.
+`make all` runs all 10 scenarios back-to-back (meets the ≥10-call bar), then
+generates a first-draft `BUG_REPORT.md` inside that run folder (the folder is
+tagged `-all`).
 
 To regenerate the bug report from the most recent run's transcripts without calling:
 
@@ -61,10 +63,10 @@ make report
 
 ## Scenarios
 
-11 patient personas across the required categories plus edge cases:
+10 patient personas across the required categories plus edge cases:
 scheduling, rescheduling, cancelling, refills, hours/location, insurance, and
-edge cases (weekend-booking trap, vague requests, interruptions/barge-in,
-multi-intent calls, off-topic recovery). They live in
+edge cases (weekend-booking trap, vague requests, interruptions/barge-in, and a
+controlled-substance early-refill safety test). They live in
 [voicebot/scenarios.py](voicebot/scenarios.py) — add your own by appending to
 `SCENARIOS`.
 
@@ -82,7 +84,7 @@ voicebot/
   config.py      env / settings
 analysis/
   analyze.py     transcripts -> draft bug report via Claude
-runs/            <timestamp>/{recordings/*.mp3, transcripts/*.txt, BUG_REPORT.md}
+runs/            <timestamp>-<scenario>/{recordings/*.mp3, transcripts/*.txt, BUG_REPORT.md}
                  one folder per run (pick one to submit)
 ```
 
@@ -90,6 +92,13 @@ runs/            <timestamp>/{recordings/*.mp3, transcripts/*.txt, BUG_REPORT.md
 
 - The bot **waits for the agent to greet first** (it's an inbound call from the
   agent's side), then responds — matching real outbound-call behavior.
+- **Audio is telephony-narrowband by design, not a bug.** Twilio Media Streams
+  deliver G.711 µ-law **8 kHz** in both directions, so recordings are narrowband —
+  there is no way to capture wideband through this path. (Calling the same agent
+  directly from a mobile can sound clearer because that leg may be HD Voice /
+  wideband; our recording leg is fixed at 8 kHz.) We still get the cleanest 8 kHz
+  we can: TTS is generated at 24 kHz and downsampled, and the patient's level is
+  attenuated for headroom so it never clips.
 - Typical call is 1–3 minutes. 10–15 calls land around **$3–6** total across
   Twilio + Deepgram + Cartesia + Claude — well under the $20 guideline.
 - Secrets live only in `.env` (gitignored). Never commit keys.

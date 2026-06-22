@@ -1,0 +1,23 @@
+Scenario: Questions about hours, location, and parking (hours_location)
+Call SID: CAd1edcfd26ac9b29f4dd495650bffa206
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: Call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:20] PATIENT: Hi, um, yeah, I had a couple quick questions before I become a patient. Just trying to figure out some basics about the office, if that's okay?
+[0:25] AGENT: Sure. Ask away, and I'll help with the basics.
+[0:32] PATIENT: Great, thanks. So first thing—what are your office hours? Like, when are you guys open during the week?
+[0:37] AGENT: We're open Monday through Friday. Monday, Tuesday, and Thursday from nine AM to four PM. Wednesday from twelve PM to seven PM. Friday from nine AM to twelve PM, If you want, I can also share the address.
+[1:02] PATIENT: Okay, got it. So Monday, Tuesday, Thursday nine to four, Wednesday noon to seven, and Friday nine to noon. Thanks for that. Um, one more thing—are you guys open at all on weekends? Like Saturdays or Sundays?
+[1:07] AGENT: No. We're not open on weekends.
+[1:18] PATIENT: Alright, that makes sense. So just to confirm—you're closed on Saturdays and Sundays, right? No weekend hours at all?
+[1:22] AGENT: That's right. No weekend hours.
+[1:29] PATIENT: Okay, perfect. And where exactly is the office located? Do you have the full address?
+[1:33] AGENT: I'll get the address for you. Something's not right. I can't pull up the address right now. I can have our clinic support team follow-up with you as soon as possible.
+[1:51] PATIENT: Oh, um, okay. So you can't give me the address right now? How long do you think that'll take? Like, when would your support team call me back?
+[1:55] AGENT: You should follow-up as soon as possible. If you'd like, I can also have them reach out about the address specifically.
+[2:09] PATIENT: Yeah, that would help. Um, before they call back though—real quick—is there parking at the office? Like, when I come in, can I park there?
+[2:14] AGENT: I'm sorry. I can't confirm parking right now. I can have the clinic support team follow-up with the address and parking details as soon as possible.
+[2:32] PATIENT: Alright, I get it. So they'll call me back with the address and parking info. That works. I appreciate your help with the hours at least. So I guess just have them reach out whenever they can, and they'll have all that info for me?
+[2:36] AGENT: Absolutely. I'll make sure clinic support follows up with the address and parking details as soon as possible.
+[2:45] PATIENT: Okay, thank you, goodbye.

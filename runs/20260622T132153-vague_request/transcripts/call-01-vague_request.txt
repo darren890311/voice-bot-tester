@@ -1,0 +1,36 @@
+Scenario: Edge case: vague, unclear request (vague_request)
+Call SID: CA2f729cdaa93bfd6b53189d1a54b3e906
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: Call may be recorded for quality and training purposes.
+[0:08] AGENT: Thanks for calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:23] PATIENT: Um, no—I'm Sam Carter. Yeah, hi. So, um, I need to deal with the thing for my appointment, and I'm not sure if you can help me with that?
+[0:28] AGENT: Please tell me your date of birth.
+[0:32] PATIENT: Oh, it's May 15th, 1987.
+[0:39] AGENT: Please spell your first and last name for me, confirm your date of birth.
+[0:48] PATIENT: Sure, it's S-A-M, and then C-A-R-T-E-R. And yeah, May 15th, 1987.
+[0:55] AGENT: You want to use a phone number to look up your record?
+[1:01] PATIENT: Um, yeah, that works. It's 555-0147.
+[1:09] AGENT: I have your number as five five five zero one four seven and your date of birth as May fifteenth nineteen eighty seven. Is that correct?
+[1:19] PATIENT: Yeah, that's right.
+[1:24] AGENT: One moment.
+[1:27] PATIENT: Okay, take your time.
+[1:32] AGENT: Please tell me your date of birth.
+[1:39] PATIENT: Um, it's May 15th, 1987. I just gave that to you though—did something not go through?
+[1:44] AGENT: Something's not right.
+[1:52] PATIENT: Oh, okay.. . um, what's wrong? Like, is my information not in the system or something?
+[1:56] AGENT: Something's not right.
+[2:03] PATIENT: I'm not sure what you mean. Can you, like, tell me what the issue is? Is my account not showing up, or.. . ?
+[2:11] AGENT: Can't proceed further right now, but I can connect you to our patient support team. Please stay on the line.
+[2:23] PATIENT: Oh, um, okay. But wait—before you transfer me, can I just ask.. . is this gonna take a while? I'm kind of in a hurry. Can't you just help me real quick with rescheduling my appointment?
+[2:28] AGENT: I can connect you to our patient support team. However, I'm a pretty good AI and can do many of the things an operator can. Do you want to give me a try?
+[2:42] PATIENT: Yeah, okay, sure. Let me try with you. So like I said, I need to deal with the thing with my appointment. Can you help me with that?
+[2:45] AGENT: I can help with that. Since this is about your appointment, I need to get you verified first. Then I can move forward.
+[2:59] PATIENT: Alright, um, but I already gave you my info—my name, date of birth, phone number. What else do you need to verify me?
+[3:05] AGENT: I have your name, date of birth, and phone number. I'm just not able to verify the record from here. I can connect you to our patient support team, or you can try again with them right now.
+[3:23] PATIENT: Okay, um.. . can I just ask what the issue is though? Like, is there something wrong with my file or something? Because I really just need to reschedule, so maybe if you just tell me what's not matching, we can figure it out?
+[3:28] AGENT: I can't tell from here what's not matching. I can connect you to our patient support team so they can take a look and help with the reschedule.
+[3:42] PATIENT: Yeah, okay, fine. Go ahead and transfer me. But like, just so they know when I get on—I need to move my appointment to a later date. That's what I'm calling about.
+[3:46] AGENT: Connecting you to a representative. Please wait.
+[3:52] AGENT: Hello. You've reached the Pretty Good AI test line. Goodbye.
+[3:59] PATIENT: Okay, thank you, goodbye.

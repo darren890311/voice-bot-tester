@@ -58,8 +58,10 @@ def run(scenario_keys: list[str], analyze: bool) -> None:
     public_host = _open_tunnel(settings.port)
 
     # One timestamped folder per run so nothing from a previous run is clobbered.
+    # Tag it with the scenario (or "all") so runs are easy to tell apart at a glance.
     run_id = time.strftime("%Y%m%dT%H%M%S")
-    run_dir = os.path.join(RUNS_DIR, run_id)
+    label = scenario_keys[0] if len(scenario_keys) == 1 else "all"
+    run_dir = os.path.join(RUNS_DIR, f"{run_id}-{label}")
     recordings_dir = os.path.join(run_dir, "recordings")
     transcripts_dir = os.path.join(run_dir, "transcripts")
     os.makedirs(recordings_dir, exist_ok=True)

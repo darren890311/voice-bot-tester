@@ -1,0 +1,23 @@
+Scenario: Cancelling an appointment (cancel)
+Call SID: CA0759c90f4a2b1c9768a92ff2ff0da4d4
+AGENT = Pretty Good AI test line | PATIENT = our voice bot
+
+[0:03] AGENT: Call may be recorded for quality and training purposes.
+[0:08] AGENT: For calling Vivid Point Orthopaedics. Part of Pretty Good AI. Am I speaking with New?
+[0:20] PATIENT: Hey, um, yeah hi. I think I need to cancel my appointment coming up. Is this the right place to do that?
+[0:26] AGENT: Please tell me your date of birth.
+[0:31] PATIENT: Oh sure, it's January 11th, 1972.
+[0:37] AGENT: Let me check your upcoming appointments.
+[0:40] PATIENT: Okay, thanks.
+[0:45] AGENT: I have three upcoming visits. One is Monday, June twenty second with doctor Zeebignew Likosky. One is Tuesday, June twenty third with Abeker. One is Monday, June twenty ninth with Dugie Hauser. Which one would you like to cancel?
+[1:05] PATIENT: Um, I think it's the one on the twenty-second with, uh, Dr. Likosky. Yeah, that one.
+[1:14] AGENT: That sounds like Monday, June twenty second with doctor Zignia Lukowski. What should I put as the reason for the cancellation?
+[1:23] PATIENT: Oh, I'm just feeling a lot better now, so I don't really need it anymore. You can just put that I'm feeling better.
+[1:30] AGENT: Let me confirm the one on Monday, June twenty second with doctor Zbigniew Likovsky.
+[1:33] AGENT: Done. Your appointment on Monday, June twenty second with doctor Zebigniew Likosky has been canceled. Is there anything else I can help with?
+[1:48] PATIENT: Great, yeah that's all set. Um, one quick thing though — is there gonna be any kind of cancellation fee or anything like that?
+[1:54] AGENT: I'm not able to confirm billing or cancellation fees here. I can document the question for the clinic support team and have them follow-up as soon as they can. If you want, I can pass that along now.
+[2:09] PATIENT: Yeah, sure, that works. Go ahead and pass that along. Thanks for your help.
+[2:16] AGENT: One moment. I'm processing that now.
+[2:20] AGENT: I sent that to our clinic support team. They'll follow-up as soon as they can.
+[2:25] PATIENT: Okay, thank you, goodbye.
